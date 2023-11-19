@@ -6,6 +6,7 @@ import App from './App';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { render } from 'react-dom';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -21,7 +22,10 @@ import { render } from 'react-dom';
 const WrapperApp = DragDropContext(HTML5Backend)(App);
 render(
   <React.StrictMode>
-    <WrapperApp />
+    <StyledEngineProvider injectFirst>
+      <WrapperApp />
+    </StyledEngineProvider>
   </React.StrictMode>,
+
   document.getElementById('root')
 );
