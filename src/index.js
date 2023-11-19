@@ -8,24 +8,23 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { render } from 'react-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 
+const WrapperApp = DragDropContext(HTML5Backend)(App);
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
 //   <React.StrictMode>
-//     <WrapperApp />
+//     <StyledEngineProvider injectFirst>
+//       <WrapperApp />
+//     </StyledEngineProvider>
 //   </React.StrictMode>
 // );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
-const WrapperApp = DragDropContext(HTML5Backend)(App);
+// const WrapperApp = DragDropContext(HTML5Backend)(App);
 render(
-  <React.StrictMode>
-    <StyledEngineProvider injectFirst>
-      <WrapperApp />
-    </StyledEngineProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <StyledEngineProvider injectFirst>
+    <WrapperApp />
+  </StyledEngineProvider>,
+  // </React.StrictMode>,
 
   document.getElementById('root')
 );

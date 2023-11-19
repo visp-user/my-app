@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { DropTarget, DragSource } from 'react-dnd';
 // import data from './data.json';
 // import _ from 'lodash';
@@ -12,16 +12,36 @@ export const ItemTypes = {
 };
 
 class Moveable2 extends Component {
-  constructor(props) {
-    super(props);
+  constructor(
+    draggableItem,
+    draggableItemId,
+    // dropEvent,
+    // connectDragSource,
+    // connectDropTarget,
+    // isDragging,
+    // isOver,
+    // dropResult,
+    ...rest
+  ) {
+    super(
+      draggableItem,
+      draggableItemId,
+      // dropEvent,
+      // connectDragSource,
+      // connectDropTarget,
+      // isDragging,
+      // isOver,
+      // dropResult,
+      // ref,
+      ...rest
+    );
+    this.moveable2 = createRef();
   }
-  UNSAFE_componentWillReceiveProps = (props) => {
-    // console.log(`componentWillReceiveProps: ${JSON.stringify(props)}`);
-  };
+  // UNSAFE_componentWillReceiveProps = (props) => {
+  //   // console.log(`componentWillReceiveProps: ${JSON.stringify(props)}`);
+  // };
 
   render() {
-    // const { draggableItem, draggableItemId, dropEvent, ...rest } = this.props;
-
     const {
       draggableItem,
       draggableItemId,
@@ -31,15 +51,20 @@ class Moveable2 extends Component {
       isDragging,
       isOver,
       dropResult,
+      item,
+      key,
+      // forwardedRef,
+      // ref,
       ...rest
     } = this.props;
-    // console.log(`rest: ${rest}`);
     return connectDropTarget(
       connectDragSource(
         <span
           {...rest}
+          id={draggableItemId}
           // className='draggable'
           className={`draggable-item`}
+          ref={this.moveable2}
           style={{
             opacity: isDragging ? 0.5 : 1,
             backgroundColor: isOver ? 'red' : 'silver',

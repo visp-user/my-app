@@ -5,35 +5,37 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import Movable from './Movable';
 import Moveable2 from './Moveable2';
 import StyledTooltip from './StyledTooltip';
-import React, { Fragment } from 'react';
+import React, { Fragment, createElement, useRef, forwardRef } from 'react';
 import { Button } from '@mui/material';
+import Typography from '@material-ui/core/Typography';
+import data2 from './data2.json';
 
 function App() {
-  return (
-    <div className='App'>
-      {/* <HightlightBase /> */}
-      {/* <Movable></Movable> */}
-      <div>
-        <StyledTooltip title='This tooltip is customized via withStyles'>
-          <Fragment>
-            <Button>hover to activate tooltip</Button>
-            <div style={{ marginBottom: '20px' }}></div>
-          </Fragment>
-        </StyledTooltip>
-      </div>
+  const extractions = data2;
 
-      <Moveable2
-        draggableItem={'draggableItem A'}
-        draggableItemId={'draggableItemId-1'}
-      ></Moveable2>
-      <Moveable2
-        draggableItem={'draggableItem B'}
-        draggableItemId={'draggableItemId-2'}
-      ></Moveable2>
-      <Moveable2
-        draggableItem={'draggableItem C'}
-        draggableItemId={'draggableItemId-3'}
-      ></Moveable2>
+  return (
+    <div>
+      <Typography component={'span'} variant={'body1'}>
+        {React.Children.toArray(
+          extractions.map((extraction) => {
+            return (
+              <>
+                <span> test </span>
+                {/* <StyledTooltip title='This tooltip is customized via withStyles'> */}
+                {/* Cannot read properties of undefined (reading 'addEventListener') */}
+                {/* <Fragment> */}
+                <Moveable2
+                  onClick={() => console.log(`onClick ${extraction.value}`)}
+                  draggableItem={extraction.value}
+                  draggableItemId={extraction.id}
+                ></Moveable2>
+                {/* </Fragment> */}
+                {/* </StyledTooltip> */}
+              </>
+            );
+          })
+        )}
+      </Typography>
     </div>
   );
 }
