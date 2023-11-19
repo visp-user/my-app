@@ -12,27 +12,40 @@ export const ItemTypes = {
 };
 
 class Moveable2 extends Component {
+  constructor(props) {
+    super(props);
+  }
   UNSAFE_componentWillReceiveProps = (props) => {
     // console.log(`componentWillReceiveProps: ${JSON.stringify(props)}`);
   };
 
   render() {
-    const { draggableItem, draggableItemId, dropEvent } = this.props;
+    // const { draggableItem, draggableItemId, dropEvent, ...rest } = this.props;
 
-    const { connectDragSource, connectDropTarget, isDragging, isOver } =
-      this.props;
+    const {
+      draggableItem,
+      draggableItemId,
+      dropEvent,
+      connectDragSource,
+      connectDropTarget,
+      isDragging,
+      isOver,
+      dropResult,
+      ...rest
+    } = this.props;
+    // console.log(`rest: ${rest}`);
     return connectDropTarget(
       connectDragSource(
-        <span className='draggable'>
-          <div
-            className={`draggable-item`}
-            style={{
-              opacity: isDragging ? 0.5 : 1,
-              backgroundColor: isOver ? 'red' : 'silver',
-            }}
-          >
-            {draggableItem}
-          </div>
+        <span
+          {...rest}
+          // className='draggable'
+          className={`draggable-item`}
+          style={{
+            opacity: isDragging ? 0.5 : 1,
+            backgroundColor: isOver ? 'red' : 'silver',
+          }}
+        >
+          {draggableItem}
         </span>
       )
     );
