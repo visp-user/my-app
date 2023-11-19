@@ -21,16 +21,16 @@ function App() {
             return (
               <>
                 <span> test </span>
-                {/* <StyledTooltip title='This tooltip is customized via withStyles'> */}
-                {/* Cannot read properties of undefined (reading 'addEventListener') */}
-                {/* <Fragment> */}
-                <Moveable2
-                  onClick={() => console.log(`onClick ${extraction.value}`)}
-                  draggableItem={extraction.value}
-                  draggableItemId={extraction.id}
-                ></Moveable2>
-                {/* </Fragment> */}
-                {/* </StyledTooltip> */}
+                <StyledTooltip title={extraction.source}>
+                  {/* Cannot read properties of undefined (reading 'addEventListener') */}
+                  <span>
+                    <Moveable2
+                      onClick={() => console.log(`onClick ${extraction.value}`)}
+                      draggableItem={extraction.value}
+                      draggableItemId={extraction.id}
+                    ></Moveable2>
+                  </span>
+                </StyledTooltip>
               </>
             );
           })
