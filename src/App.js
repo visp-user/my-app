@@ -9,6 +9,7 @@ import React, { Fragment, createElement, useRef, forwardRef } from 'react';
 import { Button } from '@mui/material';
 import Typography from '@material-ui/core/Typography';
 import data2 from './data2.json';
+import { random } from 'lodash';
 
 function App() {
   const extractions = data2;
@@ -35,6 +36,16 @@ function App() {
             );
           })
         )}
+        <span> text separator </span>
+        <StyledTooltip title={'another draggable Item'}>
+          <span>
+            <Moveable2
+              onClick={() => console.log(`onClick another draggable Item`)}
+              draggableItem={'another draggable Item'}
+              draggableItemId={'another draggableItem id'}
+            ></Moveable2>
+          </span>
+        </StyledTooltip>
       </Typography>
     </div>
   );
