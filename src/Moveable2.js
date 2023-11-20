@@ -17,13 +17,13 @@ class Moveable2 extends Component {
   };
 
   render() {
-    var { draggableItem, draggableItemId, dropEvent } = this.props;
+    const { draggableItem, draggableItemId, dropEvent } = this.props;
 
     const { connectDragSource, connectDropTarget, isDragging, isOver } =
       this.props;
     return connectDropTarget(
       connectDragSource(
-        <div className='draggable'>
+        <span className='draggable'>
           <div
             className={`draggable-item`}
             style={{
@@ -33,7 +33,7 @@ class Moveable2 extends Component {
           >
             {draggableItem}
           </div>
-        </div>
+        </span>
       )
     );
   }
